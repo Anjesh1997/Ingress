@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mobileapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mobileapp
+  template:
+    metadata:
+      labels:
+        app: mobileapp
+    spec:
+      containers:
+      - name: mobileapp
+        image: mayur702/mydockfiles:mobileapp
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
+          protocol: TCP
